@@ -31,20 +31,25 @@
         "esri/map",
         "esri/dijit/Search",
         "dojo/domReady!"
-
-      ], function (baseMapLayer) {
-         var baseMapLayer = new esri.layers.ArcGISTiledMapServiceLayer("http://juniper:6080/arcgis/rest/services/Palisades/MapServer");
-         map.addLayer(baseMapLayer);
-            
-            
+      ], function (Map, Search) {
+         var map = new Map("map", {
+               basemap: "gray",
+               center: [-56.049, 38.485],
+               zoom: 3,            
          });
-      });
+
+         var search = new Search({
+            map: map
+         }, "search");
+         search.startup();
+
+      }); 
    </script>
 </head>
 
-<body class="calcite">
-   
-   <div id="baseMapLayer"></div>
+<body class="claro">
+   <div id="search"></div>
+   <div id="map"></div>
 </body>
 
 </html>
